@@ -86,7 +86,6 @@ __global__ void ShortestPath3(float *Arr1,float *Arr2,int N){//Arr1 input array,
 		for(k=0;k<N;k++){
 			if(k==threadIdx.x+stride)continue;	
 			if(sArr[threadIdx.x+stride]>(sArr[k]+Arr1[k*N+col+stride])){		//Return
-	//			printf("ENTERED");
 				Arr2[index+stride]=(sArr[k]+Arr1[k*N+col+stride]);		//If Condition true,write to shared memory
 		//	
 			}
