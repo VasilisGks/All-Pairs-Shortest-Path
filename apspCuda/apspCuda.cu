@@ -5,7 +5,7 @@
 #include <curand.h>
 #include <curand_kernel.h>
 #define BLOCKSIZE 4
-#define CELLS_PER_THREAD 4     //For last question = Stride length
+#define CELLS_PER_THREAD 4     // Stride length
 #define gpuErrchk(ans) { gpuAssert((ans), __FILE__, __LINE__); }
 inline void gpuAssert(cudaError_t code, const char *file, int line, bool abort=true)
 {
@@ -236,7 +236,7 @@ int main(int argc,char *argv[]){
 	cudaMemcpy(Ar4,d_Ar3,size0,cudaMemcpyDeviceToHost);
 	gettimeofday(&end2, NULL);
 	
-	printf("FOR SECOND KERNEL ,VERSION WITH SHARED MEMORY TIME IS : %ld microSeconds  \n", ((end2.tv_sec * 1000000 + end2.tv_usec)
+	printf("FOR SECOND KERNEL ,SHARED MEMORY VERSION TIME IS : %ld microSeconds  \n", ((end2.tv_sec * 1000000 + end2.tv_usec)
 		  - (start2.tv_sec * 1000000 + start2.tv_usec)));
 		
 		int counter2=0;
@@ -248,7 +248,7 @@ int main(int argc,char *argv[]){
 			counter2+=1;
 			
 	}
-	//	printf("TOTAL FROM %d points ,PARALLEL BETTER OR SAME WITH SERIAL IN %d\n",N,counter);
+	//	printf("TOTAL FROM %d points ,differ between serial and parallel implementation IN %d\n",N,counter);
 		float percent=(counter2/(float)N)*100;
 		printf("**In %f percent of points**  absolute difference between parallel(with shared memory use) and serial output is less than 0.01\n",percent);
 	
@@ -256,7 +256,7 @@ int main(int argc,char *argv[]){
 
 	
 	
-	/* *************THIRD PART START BELOW : PARALLEL WITH USING OF SHARED MEMORY .N/8 THREADS IN ROW(OF SIZE N) *************************************/
+	/* *************THIRD PART START BELOW : PARALLEL IMPLEMENTATION USING SHARED MEMORY .N/8 THREADS IN ROW(OF SIZE N) *************************************/
 	/* ***********************************************************************************************************************************/
 	struct timeval start3,end3;
 	gettimeofday(&start3, NULL);
